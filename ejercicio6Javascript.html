@@ -1,0 +1,56 @@
+<html>
+   <head>
+      
+      <script type = "text/javascript">
+
+          
+            function Cookie()
+            {
+               if( document.myform.nombre.value == "" ){
+                  alert(":(");
+                  return;
+               }
+                var d = new Date();
+                d.setHours(240);//10 dias
+                
+                cookievalue= escape(document.myform.nombre.value);
+                document.cookie="name=" + cookievalue;
+                //document.write ("Cookies : " + cookievalue );
+                document.write('Cookie: '+cookievalue+'<br>'+'<a href="cookie.html">Atras</a>');
+                alert("La cookie es: "+cookievalue);                
+            }
+
+            function ReadCookie()
+            {
+               var allcookies = document.cookie;
+              // document.write ("Cookies : " + allcookies );
+                alert("La cookie es: "+allcookies);    
+            }
+            
+            function deleteCookie()
+            {
+                var d = new Date();
+                d.setHours(d.getHours()-240);//10 dias
+                cookievalue = escape(document.myform.nombre.value) + ";";
+               
+                document.cookie="name=" + cookievalue;
+                document.cookie = "expires=" + now.toUTCString() + ";";
+                document.write("Setting Cookies : " + "name=" + cookievalue );
+                alert("click en ver Cookie para comprobar");
+            }
+          
+      </script>
+      
+   </head>
+   
+   <body>
+        <a href="https://www.tutorialspoint.com/javascript/javascript_cookies.htm"></a>
+        <form name="myform" action="">
+         <label for="">Nombre: </label>
+         <input type="text" name="nombre"/>
+         <input type="button" value="Crear" onclick="Cookie();"/>
+         <input type="button" value="Eliminar" onclick="deleteCookie();"/>
+         <input type="button" value="Ver Cookie" onclick="ReadCookie()"/>
+        </form>
+   </body>
+</html>
