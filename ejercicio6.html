@@ -3,51 +3,64 @@
 
     <head>
         <meta charset="utf-8">
-        <title>Cookie</title>
+        <title></title>
         <link rel="stylesheet" href="css/bootstrap.min.css">
-         <script src="js/ejercio6.js"></script>
-        <script>
-        window.onload=function(){
-        var btn =document.getElementById("btn");
-        btn.onclick = function()
-        {
-            var nomb=document.formulario.nombre.value;
-            //crear, para eso la funcion,nombre,name campo,dias.
-            setCookie("nombre",nomb,10);
-
-            alert(document.cookie);
-        }
-        var btn_nombre=document.getElementById("btn-nombre");
-        btn_nombre.onclick = function(){
-            alert(getCookie("nombre").value);
-        }
-}
+        <script src="js/jquery-3.2.1.min.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+        
+        
+        <script type="text/javascript">
+        $(function () {
+            $("#btnCrear").click(function () {
+                $.cookie("Name", $("#nombre").val());
+                alert("Creada");
+                document.write("La cookie es: "+ $("#nombre").val()+'<br>'+'<a href="ejercicio6.html">Atras</a>');
+            });
+            $("#btnLeer").click(function () {
+                alert($.cookie("Name"));
+            });
+            $("#btnEliminar").click(function () {
+                $.removeCookie("Name");
+                alert("Eliminada, para verificar ir a Leer cookie")
+            });
+        });      
         </script>
+        
     </head>
     
     <body>
-       <div class="container">
-           
-       </div>
-           <div class="container">
-               <div class="row">
-                   <div class="col-xs-6 col-xs-offset-4 col-md-4 col-md-offset-4">
-                   <h1>Cookies</h1>
-                    <form action="" method="post" name="formulario">
-                        <div class="form-group">
-                            <input type="text" placeholder="Nombre" name="nombre">
-                        </div>
-                        <button class="btn-lg btn-primary" id="btn">Guardar Cookie</button>
-                    </form>
-                   </div>
-               </div>
-               <div class="row">
-                   <div class="col">
-                       <button id="btn-nombre">Obtener valor</button>
-                   </div>
-               </div>
-           </div>
        
+        <div class="container">
+        <div class="row">
+            <div class="col text-center">
+                <h1>Cookies</h1>
+                <p>con plugin jquery-cookie, versión cdn.</p>
+            </div>
+        </div>
+        <br>
+        <div class="row">
+        <div class="col-xs-12 col-md-12 text-center">    
+        <div class="form-group">    
+            <label for="">Nombre</label>
+            <input type="text" id="nombre" />
+        </div>
+        </div>
+        <div class="col-xs-12 col-md-12 text-center">      
+            <div class="form-group">
+            <input id="btnCrear" type="button" value="Crear Cookie" onclick="WriteCookie()" class="btn btn-success"/>
+            <input id="btnLeer" type="button" value="Leer Cookie" onclick="ReadCookie()" class="btn btn-info"/>
+            <input id="btnEliminar" type="button" value="Eliminar Cookie" onclick="RemoveCookie()" class="btn btn-danger"/>
+        </div>
+        </div>    
+
+        </div>
+        </div>
+        </div>
+        <br>
+        <hr>
+        <p class="text-center">
+        <a href="ejercicio5.html" class="btn btn-danger">Anterior</a>
+        </p>
     </body>
     
 </html>    
